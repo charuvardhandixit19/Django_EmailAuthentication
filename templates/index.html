@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn-signup {
+            background-color: #28a745;
+            margin-left: 20px;
+        }
+        .btn-signup:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {%for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+            <strong>Message :</strong>{{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-lable="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {%endfor%}
+
+        <h1>Welcome to Our Website</h1>
+        {%if user.is_autheniticated%}
+        <h3>Hello{{firstname}}</h3>
+        <h5>You have successfully Loged in<h5/>
+        <a href="/signin" class="btn">Sign out</a>
+         <br> 
+        {%else%}   
+        <p>Explore our amazing features</p>
+        <a href="/signin" class="btn">Sign In</a>
+        <a href="/signup" class="btn btn-signup">Sign Up</a>
+        {%endif%}
+    </div>
+</body>
+</html>
